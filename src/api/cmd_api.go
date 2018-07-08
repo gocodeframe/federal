@@ -12,6 +12,7 @@ type CmdApi struct {
 
 func (this *CmdApi) RunCmd() error {
 	app := cli.NewApp()
+	app.Version = "18.01.v1"
 	app.Commands = this.cmdConfig()
 	return app.Run(os.Args)
 }
