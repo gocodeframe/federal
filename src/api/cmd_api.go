@@ -1,7 +1,7 @@
 package api
 
 import (
-	"fmt"
+	"domain"
 	"os"
 
 	"github.com/urfave/cli"
@@ -21,12 +21,24 @@ func (this *CmdApi) cmdConfig() []cli.Command {
 	return []cli.Command{
 		{
 			Name:    "assign",
-			Aliases: []string{"a"},
+			Aliases: []string{},
 			Usage:   "exec a assignment",
+			Flags:   this.asignFlags(),
 			Action: func(c *cli.Context) error {
-				fmt.Println("added task: ", c.Args().First())
+				assignmentList := &domain.AssigmentList{}
+				assignmentList.Load(c.String("file"))
+				assignmentList.Run()
 				return nil
 			},
 		},
 	}
+}
+
+func (this *CmdApi) asignFlags() []cli.Flag {
+	return []cli.Flag{
+		cli.StringFlag{
+			Name:  "file, f",
+			Usage: "assigments(yaml file)",
+			Value: "default.yaml",
+		}}
 }

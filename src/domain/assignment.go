@@ -4,13 +4,9 @@ import (
 	"infra/logs"
 )
 
-type ITask interface {
-	Exec(task string, host string) error
-}
-
 type Assigment struct {
 	Hosts    []string
-	TaskList []ITask
+	TaskList []Task
 }
 
 func (this *Assigment) Run() {
