@@ -1,0 +1,5 @@
+---
+- hosts: [all]
+  tasks:
+    - name: Installs nginx web server
+      cmd: "ls"

@@ -5,8 +5,8 @@ import (
 )
 
 type Assigment struct {
-	Hosts    []string
-	TaskList []Task
+	Hosts    []string `yaml:"hosts"`
+	TaskList []Task   `yaml:"tasks"`
 }
 
 func (this *Assigment) Run() {

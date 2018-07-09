@@ -5,13 +5,13 @@ import (
 )
 
 type Task struct {
-	Name string
-	Cmds []string
+	Name string `yaml:"name"`
+	Cmd  string `yaml:"cmd"`
 	rlt  TaskResult
 }
 
 func (this *Task) Exec(task string, host string) error {
 	logs.PrintTitle("Task", host)
-	this.rlt.Out()
+	(&TaskResult{Rlt: "success", Target: "all", Msg: "hello world"}).Out()
 	return nil
 }

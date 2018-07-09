@@ -27,7 +27,7 @@ func (this *AssigmentList) Load(fileName string) error {
 		return err
 	}
 
-	err = yaml.Unmarshal(content, this)
+	err = yaml.Unmarshal(content, &this.List)
 	if err != nil {
 		log.Fatalf("%s", err.Error())
 		return err
